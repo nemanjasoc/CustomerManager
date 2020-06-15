@@ -1,0 +1,20 @@
+@import 'src/scss/variables';
+
+header {
+    height: 70px;
+    width: 100%;
+    background-color: $base-color;
+    display: flex;
+    border-bottom: 2px solid #feda6a;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.header-title {
+    color: white;
+    font-size: 18px;
+}

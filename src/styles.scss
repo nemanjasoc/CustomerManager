@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~font-awesome/css/font-awesome.min.css";
+@import 'src/scss/variables';
+
+html {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    background-color: $base-gray;
+
+    // Are ya yellow?!: #feda6a
+
+    // Silver Fox: #d4d4dc
+
+    // Deep Matte Grey: #393f4d
+
+    // Dark Slate: #1d1e22
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
