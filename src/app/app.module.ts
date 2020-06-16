@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CustomersCardComponent } from './customers/customers-card/customers-card.component';
-import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { CustomerEditDialogComponent } from './customer/customer-edit/customer-edit-dialog.component';
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { CustomersTableComponent } from './customers/customers-table/customers-table.component';
 
@@ -21,7 +21,7 @@ import { CustomersTableComponent } from './customers/customers-table/customers-t
     AppComponent,
     HeaderComponent,
     CustomersCardComponent,
-    CustomerEditComponent,
+    CustomerEditDialogComponent,
     CustomerDetailComponent,
     CustomersTableComponent
   ],

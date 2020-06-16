@@ -4,7 +4,7 @@
         Customer name
     </div>
 
-    <form class="customer-form" #newCustomerForm="ngForm" (ngSubmit)="onSubmit(newCustomerForm)">
+    <form class="customer-form" #newCustomerForm="ngForm">
         <mat-form-field>
             <mat-label>First Name</mat-label>
             <input matInput [(ngModel)]="customer.firstName" name="firstName" #pickedFirstName="ngModel" required>
@@ -18,7 +18,7 @@
         <div class="required-message" *ngIf="!pickedLastName.valid && pickedLastName.touched">Last Name is required!</div>
         
         <label>Gender</label>
-        <mat-radio-group [(ngModel)]="customer.gender" (change)="onChangeGender($event)" name="gender">
+        <mat-radio-group [(ngModel)]="customer.gender" name="gender">
             <mat-radio-button color="primary" value="male">Male</mat-radio-button>
             <mat-radio-button color="primary" value="female">Female</mat-radio-button>
         </mat-radio-group>
@@ -48,8 +48,8 @@
         <div class="required-message" *ngIf="!customerState.valid && customerState.touched">State is required!</div>
 
         <div class="dialog-buttons">
-            <button mat-raised-button color="primary" type="submit" [disabled]="!newCustomerForm.form.valid">Create</button>
-            <button mat-raised-button (click)="newCustomerForm.reset()">Cancel</button>
+            <button mat-raised-button (click)="onClickSave()" color="primary" [disabled]="!newCustomerForm.form.valid">Create</button>
+            <button mat-button mat-dialog-close type="button">Close</button>
         </div>
     </form>
 </section>

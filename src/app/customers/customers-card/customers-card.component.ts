@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditComponent } from 'src/app/customer/customer-edit/customer-edit.component';
-import { Customer } from 'src/app/customer/customer-edit/customer.model';
+import { CustomerEditDialogComponent } from 'src/app/customer/customer-edit/customer-edit-dialog.component';
+import { Customer } from 'src/app/models/customer.model';
+import { LocalStorageService } from 'src/app/service/local-storage.service';
 
 @Component({
   templateUrl: './customers-card.component.html',
@@ -11,22 +12,19 @@ export class CustomersCardComponent implements OnInit {
   customers: Customer[] = [];
 
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    private lsService: LocalStorageService) { }
 
 
   ngOnInit(): void {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CustomerEditComponent, {
-      height: '400px',
+    this.dialog.open(CustomerEditDialogComponent, {
+      height: '600px',
       width: '600px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      //console.log(`Dialog result: ${result}`);
-      this.customers = JSON.parse(localStorage.getItem('customers'));
-      console.log("customers in card: ", this.customers)
+    }).afterClosed().subscribe(() => {
+      this.customers = this.lsService.getCustomers();
     });
   }
 
