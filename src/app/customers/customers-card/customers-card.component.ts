@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomerEditComponent } from 'src/app/customer/customer-edit/customer-edit.component';
-import { CustomerForm } from 'src/app/customer/customer-edit/customer-edit';
+import { Customer } from 'src/app/customer/customer-edit/customer.model';
 
 @Component({
   templateUrl: './customers-card.component.html',
   styleUrls: ['./customers-card.component.scss']
 })
 export class CustomersCardComponent implements OnInit {
-  customers: CustomerForm[] = [];
+  customers: Customer[] = [];
 
 
   constructor(public dialog: MatDialog) { }

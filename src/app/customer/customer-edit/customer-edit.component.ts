@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { CustomerForm } from './customer-edit';
+import { Customer } from './customer.model';
 
 @Component({
   templateUrl: './customer-edit.component.html',
   styleUrls: ['./customer-edit.component.scss']
 })
 export class CustomerEditComponent implements OnInit {
-  customer: CustomerForm =
+  customer: Customer =
     {
       id: 0,
       firstName: '',
       lastName: '',
-      gender: '',
+      gender: 'male',
       email: '',
       address: '',
       city: '',
       state: ''
     }
-  customers: CustomerForm[] = [];
+  customers: Customer[] = [];
 
   constructor() { }
 
@@ -49,7 +49,7 @@ export class CustomerEditComponent implements OnInit {
       this.customer = form.value;
       this.generateID();
       this.customers.push(this.customer)
-      localStorage.setItem('customers', JSON.stringify(this.customers));
+      localStorage.setItem('customer', JSON.stringify(this.customer));
       console.log("customers in edit: ", this.customers)
     }
   }
