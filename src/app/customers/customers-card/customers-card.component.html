@@ -23,7 +23,7 @@
                 <span>Map View</span>
             </li>
             <li>
-                <a routerLink="/customer-edit">
+                <a routerLink="/customer-edit" (click)="openDialog()">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                 </a>
                 <span>New Customer</span>
@@ -36,58 +36,16 @@
     </div>
     
     <div class="all-cards">
-        <mat-card>
+        <mat-card *ngFor="let customer of customers">
             <div class="card-header">
-                <span class="customer-name">Ted James</span>
+                <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </div>
             <mat-card-content>
-                <img mat-card-image src="../../assets/images/male.png" alt="male">
+                <img mat-card-image src="{{'../../assets/images/'+ customer.gender +'.png'}}" alt="male">
                 <div class="customer-info">
-                    <span class="customer-city">City</span>
-                    <span class="customer-state">State</span>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <div class="card-header">
-                <span class="customer-name">Ted James</span>
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </div>
-            <mat-card-content>
-                <img mat-card-image src="../../assets/images/male.png" alt="male">
-                <div class="customer-info">
-                    <span class="customer-city">City</span>
-                    <span class="customer-state">State</span>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <div class="card-header">
-                <span class="customer-name">Ted James</span>
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </div>
-            <mat-card-content>
-                <img mat-card-image src="../../assets/images/male.png" alt="male">
-                <div class="customer-info">
-                    <span class="customer-city">City</span>
-                    <span class="customer-state">State</span>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <div class="card-header">
-                <span class="customer-name">Ted James</span>
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </div>
-            <mat-card-content>
-                <img mat-card-image src="../../assets/images/male.png" alt="male">
-                <div class="customer-info">
-                    <span class="customer-city">City</span>
-                    <span class="customer-state">State</span>
+                    <span class="customer-city">{{ customer.city }}</span>
+                    <span class="customer-state">{{ customer.state }}</span>
                 </div>
             </mat-card-content>
         </mat-card>

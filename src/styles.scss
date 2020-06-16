@@ -3,23 +3,14 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import 'src/scss/variables';
 
-html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+html, body { 
+    height: 100%; 
 }
 
-body {
-    margin: 0;
-    background-color: $base-gray;
-
-    // Are ya yellow?!: #feda6a
-
-    // Silver Fox: #d4d4dc
-
-    // Deep Matte Grey: #393f4d
-
-    // Dark Slate: #1d1e22
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;  
+    background-color: $base-gray; 
 }
 
 ul {
@@ -31,5 +22,18 @@ li {
     display: inline-block;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-dialog-container {
+    padding: 25px 50px !important;
+}
+
+.mat-radio-label {
+    margin-bottom: 4px;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #3f51b5;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #3f51b5;
+}

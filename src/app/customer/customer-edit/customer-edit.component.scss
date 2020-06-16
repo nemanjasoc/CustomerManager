@@ -1,9 +1,5 @@
 @import 'src/scss/variables';
 
-section {
-    padding: 20px 0 20px 50px;
-}
-
 .card-title {
     font-size: 24px;
     margin-bottom: 20px;
@@ -15,31 +11,34 @@ section {
 }
 
 label {
-    margin-bottom: 5px;
+    margin: 25px 0 5px 0;
     font-weight: 600;
 }
 
 .gender {
-    font-weight: 500;
-}
-
-input[type=text],
-input[type=email] {
-    max-width: 300px;
-    border-radius: 4px;
-    border-top: 1px solid gray;
-    border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
-    border-left: 2px solid #feda6a;
-    line-height: 22px;
-}
-
-input[type=radio] {
-    margin-left: 0;
-}
-
-.form-group {
     display: flex;
-    flex-direction: column;
-    padding: 8px 0;
+    flex-wrap: wrap;
+}
+
+.mat-form-field {
+    margin-top: 25px;
+}
+
+.mat-radio-button {
+    margin-right: 16px;
+}
+
+.required-message {
+    font-size: 12px;
+    color: red;
+}
+
+.dialog-buttons {
+    margin-top: 20px;
+}
+
+.mat-raised-button.mat-primary {
+    background-color: #393f4d;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }

@@ -9,6 +9,7 @@
 .customers-nav {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     margin: 0 25px;
 
@@ -103,4 +104,10 @@
         font-size: 16px;
         font-weight: 600;
     }
+}
+
+input[type=text] {
+    line-height: 22px;
+    border-radius: 4px;
+    border: 1px solid gray;
 }
