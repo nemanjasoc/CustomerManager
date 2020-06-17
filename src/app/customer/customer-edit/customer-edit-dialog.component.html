@@ -52,7 +52,7 @@
             <button mat-button mat-dialog-close>Close</button>
         </div>
         <div class="dialog-buttons-edit" *ngIf="communicationService.editCustomerIsOpen">
-            <button mat-raised-button (click)="onClickEditCustomer()" color="primary" [disabled]="!newCustomerForm.form.valid">Update</button>
+            <button mat-raised-button (click)="onClickEditCustomer()" color="primary" [disabled]="!newCustomerForm.form.valid">Edit</button>
             <button mat-button (click)="onClickDeleteCustomer()">Delete</button>
         </div>
     </form>

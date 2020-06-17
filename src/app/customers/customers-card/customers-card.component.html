@@ -29,10 +29,10 @@
                 <span>New Customer</span>
             </li>
         </ul>
-        <form>
-            <label>Filter:</label>
-            <input type="text">
-        </form>
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput>
+        </mat-form-field>
     </div>
     
     <div class="all-cards">
@@ -42,7 +42,7 @@
                 <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="openEditDialog(customer)"></i>
             </div>
             <mat-card-content>
-                <img mat-card-image src="{{'../../assets/images/'+ customer.gender +'.png'}}" alt="male">
+                <img mat-card-image src="{{'../../assets/images/'+ customer.gender +'.png'}}" alt="{{customer.gender}}">
                 <div class="customer-info">
                     <span class="customer-city">{{ customer.city }}</span>
                     <span class="customer-state">{{ customer.state }}</span>

@@ -1,1 +1,39 @@
-<p>customers-table works!</p>
+<div class="table-container">
+    <div class="table-title">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        Customers
+    </div>
+
+    <nav>
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="openDialog()">Add New Customer</button>
+    </nav>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let customer of customers">
+                    <tr>
+                        <td><img src="{{'../../assets/images/'+ customer.gender +'.png'}}" alt="{{customer.gender}}"></td>
+                        <td>{{ customer.firstName }}</td>
+                        <td>{{ customer.lastName }}</td>
+                        <td>{{ customer.address }}</td>
+                        <td>{{ customer.city }}</td>
+                        <td>{{ customer.state }}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
