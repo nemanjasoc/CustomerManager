@@ -33,11 +33,14 @@ label {
     color: red;
 }
 
-.dialog-buttons {
+.dialog-buttons,
+.dialog-buttons-edit {
     margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .mat-raised-button.mat-primary {
     margin-right: 20px;
-    margin-bottom: 20px;
 }

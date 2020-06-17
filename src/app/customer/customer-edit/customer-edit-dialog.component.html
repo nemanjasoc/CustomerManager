@@ -47,9 +47,13 @@
         </mat-form-field>
         <div class="required-message" *ngIf="!customerState.valid && customerState.touched">State is required!</div>
 
-        <div class="dialog-buttons">
+        <div class="dialog-buttons" *ngIf="!communicationService.editCustomerIsOpen">
             <button mat-raised-button (click)="onClickSave()" color="primary" [disabled]="!newCustomerForm.form.valid">Create</button>
-            <button mat-button mat-dialog-close type="button">Close</button>
+            <button mat-button mat-dialog-close>Close</button>
+        </div>
+        <div class="dialog-buttons-edit" *ngIf="communicationService.editCustomerIsOpen">
+            <button mat-raised-button (click)="onClickEditCustomer()" color="primary" [disabled]="!newCustomerForm.form.valid">Update</button>
+            <button mat-button (click)="onClickDeleteCustomer()">Delete</button>
         </div>
     </form>
 </section>

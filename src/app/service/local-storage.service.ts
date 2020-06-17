@@ -9,7 +9,6 @@ const customerLSKey = 'customers';
 
 export class LocalStorageService {
 
-
     getCustomers(): Customer[] {
         let customers = localStorage.getItem(customerLSKey);
 
@@ -31,7 +30,7 @@ export class LocalStorageService {
     createId(data: any[]): number {
         let id = 0;
         data.forEach(item => {
-            if(item.id > id) {
+            if (item.id > id) {
                 id = item.id;
             }
         });

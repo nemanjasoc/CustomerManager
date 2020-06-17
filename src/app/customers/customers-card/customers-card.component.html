@@ -39,7 +39,7 @@
         <mat-card *ngFor="let customer of customers">
             <div class="card-header">
                 <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="openEditDialog(customer)"></i>
             </div>
             <mat-card-content>
                 <img mat-card-image src="{{'../../assets/images/'+ customer.gender +'.png'}}" alt="male">
