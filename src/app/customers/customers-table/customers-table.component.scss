@@ -19,47 +19,18 @@ nav {
 }
 
 .table-wrapper {
-    display: flex;
-    justify-content: center;
+    overflow: auto;
 }
 
 table {
-    border-collapse: collapse;
     width: 100%;
-    margin: 5% 10%;
 }
 
-tr, th {
-    border-bottom: 1px solid white;
-}
-
-th, td {
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
     padding: 5px;
-    font-size: 13px;
-    text-align: left;
 }
 
-td {
-    img {
-        width: 36px;
-        height: 36px;
-    }
-}
-
-@media only screen and (max-width: 420px) {
-    .mat-raised-button {
-        font-size: 11px;
-    }
-
-    th, td {
-        padding: 4px;
-        font-size: 11px;
-    }
-    
-    td {
-        img {
-            width: 28px;
-            height: 28px;
-        }
-    }
+.avatar-image {
+    width: 36px;
+    height: 36px;
 }

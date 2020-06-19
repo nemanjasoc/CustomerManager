@@ -1,0 +1,71 @@
+@import 'src/scss/mixins';
+
+.details-title {
+    margin: 20px;
+    font-size: 24px;
+}
+
+.customer-details-nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 25px;
+
+    li {
+        padding: 0 0 20px 25px;
+    }
+}
+
+.customer-details-nav {
+    .fa-list {
+        color: #feda6a;
+    }
+
+    .fa-pencil-square-o {
+        color: gray;
+        cursor: pointer;
+        @include transition(all 0.2s ease-in-out 0s);
+
+        &:hover {
+            color: #feda6a;
+        }
+    }
+}
+
+.customer-details-title {
+    margin-left: 8px;
+    color: black;
+    font-weight: 600;
+}
+
+.customer-edit-title {
+    margin-left: 8px;
+    color: gray;
+}
+
+.customer-informations-content {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+
+    img {
+        width: 65px;
+        height: 65px;
+        margin-right: 50px;
+    }
+}
+
+.customer-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-name {
+    margin-bottom: 20px;
+}
+
+.customer-address,
+.customer-city-state {
+    font-size: 14px;
+}

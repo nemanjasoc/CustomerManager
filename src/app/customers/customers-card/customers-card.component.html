@@ -17,15 +17,13 @@
                 <span>List View</span>
             </li>
             <li>
-                <a routerLink="/customer-detail">
+                <a routerLink="/customer-details">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                 </a>
                 <span>Map View</span>
             </li>
             <li>
-                <a routerLink="/customer-edit" (click)="openDialog()">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                </a>
+                <i class="fa fa-plus" aria-hidden="true" (click)="openDialog()"></i>
                 <span>New Customer</span>
             </li>
         </ul>

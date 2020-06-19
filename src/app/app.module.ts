@@ -7,13 +7,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CustomersCardComponent } from './customers/customers-card/customers-card.component';
 import { CustomerEditDialogComponent } from './customer/customer-edit/customer-edit-dialog.component';
-import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
+import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { CustomersTableComponent } from './customers/customers-table/customers-table.component';
 
 @NgModule({
@@ -22,7 +24,7 @@ import { CustomersTableComponent } from './customers/customers-table/customers-t
     HeaderComponent,
     CustomersCardComponent,
     CustomerEditDialogComponent,
-    CustomerDetailComponent,
+    CustomerDetailsComponent,
     CustomersTableComponent
   ],
   imports: [
@@ -34,7 +36,9 @@ import { CustomersTableComponent } from './customers/customers-table/customers-t
     MatDialogModule,
     MatInputModule,
     MatRadioModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

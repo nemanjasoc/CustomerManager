@@ -25,12 +25,6 @@
         span {
             margin-left: 8px;
             color: gray;
-            @include transition(all 0.2s ease-in-out 0s);
-
-            &:hover {
-                color: black;
-                font-weight: 600;
-            }
         }
 
         a {
@@ -50,6 +44,16 @@
 
         .fa-th-large {
             color: #feda6a;
+        }
+
+        .fa-plus {
+            color: gray;
+            cursor: pointer;
+            @include transition(all 0.2s ease-in-out 0s);
+
+            &:hover {
+                color: #feda6a;
+            }
         }
     }
 }
@@ -85,6 +89,7 @@
 
 .fa-pencil-square-o {
     font-size: 16px;
+    cursor: pointer;
 }
 
 .mat-card-content {
