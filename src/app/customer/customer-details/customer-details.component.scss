@@ -52,7 +52,7 @@
     img {
         width: 65px;
         height: 65px;
-        margin-right: 50px;
+        margin-right: 80px;
     }
 }
 
@@ -68,4 +68,25 @@
 .customer-address,
 .customer-city-state {
     font-size: 14px;
+}
+
+.map-containder {
+    position: relative;
+}
+
+.google-map-buttons {
+    right: 1px;
+    position: absolute;
+    top: 380px;
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin: 5px 10px 0 0;
+        line-height: 32px;
+        width: 120px;
+        cursor: pointer;
+        background: white;
+        border: none;
+    }
 }

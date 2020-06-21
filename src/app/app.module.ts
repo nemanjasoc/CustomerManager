@@ -9,6 +9,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { GoogleMapsModule } from '@angular/google-maps'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { CustomersCardComponent } from './customers/customers-card/customers-car
 import { CustomerEditDialogComponent } from './customer/customer-edit/customer-edit-dialog.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { CustomersTableComponent } from './customers/customers-table/customers-table.component';
+import { CustomersMapComponent } from './customers/customers-map/customers-map.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CustomersTableComponent } from './customers/customers-table/customers-t
     CustomersCardComponent,
     CustomerEditDialogComponent,
     CustomerDetailsComponent,
-    CustomersTableComponent
+    CustomersTableComponent,
+    CustomersMapComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { CustomersTableComponent } from './customers/customers-table/customers-t
     MatRadioModule,
     MatButtonModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

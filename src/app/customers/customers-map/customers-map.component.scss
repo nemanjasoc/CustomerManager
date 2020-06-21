@@ -1,0 +1,41 @@
+.customer-informations-content {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+
+    img {
+        width: 65px;
+        height: 65px;
+        margin-right: 50px;
+    }
+}
+
+.customer-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-name {
+    margin-bottom: 20px;
+}
+
+.customer-address,
+.customer-city-state {
+    font-size: 14px;
+}
+
+.google-map-buttons {
+    position: absolute;
+    top: 80px;
+    right: 53px;
+    margin-left: 200px;
+
+    button {
+        margin: 5px 10px 0 0;
+        line-height: 32px;
+        width: 120px;
+        cursor: pointer;
+        background: white;
+        border: none;
+    }
+}

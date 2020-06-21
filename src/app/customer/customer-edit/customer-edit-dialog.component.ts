@@ -4,7 +4,6 @@ import { Customer } from '../../models/customer.model';
 import { LocalStorageService } from '../../service/local-storage.service';
 import { CommunicationService } from 'src/app/service/communication.service';
 
-
 @Component({
   templateUrl: './customer-edit-dialog.component.html',
   styleUrls: ['./customer-edit-dialog.component.scss']
@@ -30,7 +29,7 @@ export class CustomerEditDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.communicationService.editCustomerIsOpen) {
-      this.customer = this.communicationService.customer;
+      this.customer = this.communicationService.customerForEdit;
     }
   }
 

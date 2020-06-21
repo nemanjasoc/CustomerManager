@@ -33,13 +33,15 @@ export class CustomersCardComponent implements OnInit {
   }
 
   openEditDialog(customerForEdit: Customer) {
-    console.log("customer from card: ", customerForEdit)
-    
     this.communicationService.saveCustomerForEdit(customerForEdit);
     
     this.openDialog();
 
     this.communicationService.editCustomerIsOpen = true;
+  }
+
+  openCustomerDetails(customerDetails) {
+    this.communicationService.saveCustomerDetails(customerDetails);
   }
 
 }

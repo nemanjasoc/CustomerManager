@@ -17,7 +17,7 @@
                 <span>List View</span>
             </li>
             <li>
-                <a routerLink="/customer-details">
+                <a routerLink="/customers-map">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                 </a>
                 <span>Map View</span>
@@ -39,7 +39,7 @@
                 <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
                 <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="openEditDialog(customer)"></i>
             </div>
-            <mat-card-content>
+            <mat-card-content routerLink="/customer-details" (click)="openCustomerDetails(customer)">
                 <img mat-card-image src="{{'../../assets/images/'+ customer.gender +'.png'}}" alt="{{customer.gender}}">
                 <div class="customer-info">
                     <span class="customer-city">{{ customer.city }}</span>

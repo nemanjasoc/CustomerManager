@@ -7,9 +7,14 @@ import { Customer } from '../models/customer.model';
 
 export class CommunicationService {
     editCustomerIsOpen = false;
-    customer: Customer;
+    customerForEdit: Customer;
+    customerDetails: Customer;
 
     saveCustomerForEdit(customerForEdit: Customer) {
-        this.customer = customerForEdit;
+        this.customerForEdit = customerForEdit;
+    }
+
+    saveCustomerDetails(customerDetails: Customer) {
+        this.customerDetails = customerDetails;
     }
 }

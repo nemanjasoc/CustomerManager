@@ -11,13 +11,13 @@
                 <span class="customer-details-title">Customer Details</span>
             </li>
             <li>
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="openEditDialog(customer)"></i>
                 <span class="customer-edit-title">Edit Customer</span>
             </li>
         </ul>
     </div>
 
-    <div class="customer-informations-content" *ngFor="let customer of customers">
+    <div class="customer-informations-content">
         <img src="{{'../../assets/images/'+ customer.gender +'.png'}}" alt="{{customer.gender}}">
         <div class="customer-details">
             <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
@@ -26,3 +26,27 @@
         </div>
     </div>
 </div>
+
+<google-map
+    height="100vh"
+    width="100%"
+    [zoom]="zoom"
+    [center]="center"
+    [options]="options"
+    (mapClick)="click($event)">
+    <map-marker
+        #markerElem
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [label]="marker.label"
+        [options]="marker.options"
+        (mapClick)="openInfo(markerElem, marker.info)">
+    </map-marker>
+    <map-info-window>{{infoContent}}</map-info-window>
+    <div class="google-map-buttons">
+        <button (click)="zoomIn()">Zoom in</button>
+        <button (click)="zoomOut()">Zoom out</button> 
+        <button (click)="logCenter()">Log center</button>
+        <button (click)="addMarker()">Add marker</button>
+    </div>
+</google-map>
