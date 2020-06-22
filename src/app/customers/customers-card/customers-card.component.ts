@@ -11,6 +11,7 @@ import { CommunicationService } from 'src/app/service/communication.service';
 })
 export class CustomersCardComponent implements OnInit {
   customers: Customer[] = [];
+  filteredCustomers: Customer[] = [];
 
 
   constructor(public dialog: MatDialog, 
@@ -20,6 +21,7 @@ export class CustomersCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.customers = this.lsService.getCustomers();
+    this.filteredCustomers = this.customers;
   }
 
   openDialog() {
@@ -27,7 +29,7 @@ export class CustomersCardComponent implements OnInit {
       height: '600px',
       width: '600px'
     }).afterClosed().subscribe(() => {
-      this.customers = this.lsService.getCustomers();
+      this.filteredCustomers = this.lsService.getCustomers();
     });
     this.communicationService.editCustomerIsOpen = false;
   }
@@ -42,6 +44,22 @@ export class CustomersCardComponent implements OnInit {
 
   openCustomerDetails(customerDetails) {
     this.communicationService.saveCustomerDetails(customerDetails);
+  }
+
+  searchCustomer(event): void {
+    let searchText = event.target.value;
+
+    if (!searchText || !searchText.length) {
+      this.filteredCustomers = this.customers;
+      return 
+    }
+
+    this.filteredCustomers = this.customers.filter(item => {
+      return (item.firstName).toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) || 
+      (item.lastName).toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) || 
+      (item.city).toLocaleLowerCase().includes(searchText.toLocaleLowerCase()) ||
+      (item.state).toLocaleLowerCase().includes(searchText.toLocaleLowerCase());
+    })
   }
 
 }

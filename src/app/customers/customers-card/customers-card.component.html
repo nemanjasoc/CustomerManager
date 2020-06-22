@@ -29,12 +29,12 @@
         </ul>
         <mat-form-field>
             <mat-label>Filter</mat-label>
-            <input matInput>
+            <input matInput (keyup.enter)="searchCustomer($event)">
         </mat-form-field>
     </div>
     
     <div class="all-cards">
-        <mat-card *ngFor="let customer of customers">
+        <mat-card *ngFor="let customer of filteredCustomers">
             <div class="card-header">
                 <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
                 <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="openEditDialog(customer)"></i>
