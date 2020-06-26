@@ -1,4 +1,4 @@
-export interface Customer {
+export class Customer {
     id: number;
     firstName: string;
     lastName: string;
@@ -7,4 +7,10 @@ export interface Customer {
     address: string;
     city: string;
     state: string;
+
+
+    constructor() {
+      this.gender = 'male';
+    }
+
 }

@@ -1,7 +1,7 @@
 <section>
     <div class="card-title">
         <i class="fa fa-user" aria-hidden="true"></i>
-        Customer name
+        Customer
     </div>
 
     <form class="customer-form" #newCustomerForm="ngForm">
@@ -47,13 +47,9 @@
         </mat-form-field>
         <div class="required-message" *ngIf="!customerState.valid && customerState.touched">State is required!</div>
 
-        <div class="dialog-buttons" *ngIf="!communicationService.editCustomerIsOpen">
-            <button mat-raised-button (click)="onClickSave()" color="primary" [disabled]="!newCustomerForm.form.valid">Create</button>
+        <div class="dialog-buttons">
+            <button mat-raised-button (click)="onClickSave()" color="primary" [disabled]="!newCustomerForm.form.valid">Save</button>
             <button mat-button mat-dialog-close>Close</button>
-        </div>
-        <div class="dialog-buttons-edit" *ngIf="communicationService.editCustomerIsOpen">
-            <button mat-raised-button (click)="onClickEditCustomer()" color="primary" [disabled]="!newCustomerForm.form.valid">Edit</button>
-            <button mat-button (click)="onClickDeleteCustomer()">Delete</button>
         </div>
     </form>
 </section>

@@ -1,0 +1,32 @@
+.title-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.customer-icon {
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+}
+
+.customers-title,
+.customer-title  {
+    margin: 20px;
+    font-size: 24px;
+}
+
+.customers-nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 25px;
+
+    li {
+        padding: 10px 0 10px 25px;
+
+        span {
+            margin-left: 8px;
+        }
+    }
+}

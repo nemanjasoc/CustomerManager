@@ -9,11 +9,13 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { CustomersCardComponent } from './customers/customers-card/customers-card.component';
 import { CustomerEditDialogComponent } from './customer/customer-edit/customer-edit-dialog.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
@@ -24,6 +26,7 @@ import { CustomersMapComponent } from './customers/customers-map/customers-map.c
   declarations: [
     AppComponent,
     HeaderComponent,
+    NavigationComponent,
     CustomersCardComponent,
     CustomerEditDialogComponent,
     CustomerDetailsComponent,
@@ -42,7 +45,8 @@ import { CustomersMapComponent } from './customers/customers-map/customers-map.c
     MatButtonModule,
     MatTableModule,
     MatSortModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

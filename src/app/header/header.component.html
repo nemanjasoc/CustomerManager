@@ -1,9 +1,10 @@
 <header>
-    <nav class="header-content">
+    <div class="header-content">
         <div class="image-wrapper">
             <img src="../../assets/images/people.png" alt="people">
         </div>
         <span class="header-title">Customer Manager</span>
-        <a class="home-link" routerLink="/customers-card">Home</a>
-    </nav> 
+    </div>
+    <!-- <a href="data:application/octet-stream;charset=utf-8;base64,Zm9vIGJhcg==">text file</a>  -->
+    <button><a title="Download JSON" [href]="downloadJsonHref" download="download.json"></a>Download JSON</button>
 </header>

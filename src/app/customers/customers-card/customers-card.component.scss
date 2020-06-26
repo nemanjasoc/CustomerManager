@@ -1,67 +1,14 @@
 @import 'src/scss/variables';
-@import 'src/scss/mixins';
 
-.card-title {
-    margin: 20px;
-    font-size: 24px;
-}
-
-.customers-nav {
+.mat-form-field {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 0 25px;
-
-    .mat-form-field {
-        display: flex;
-        flex-direction: column;
-        margin-left: 16px;
-    }
-
-    li {
-        padding: 0 0 20px 25px;
-
-        span {
-            margin-left: 8px;
-            color: gray;
-        }
-
-        a {
-            cursor: pointer;
-            color: gray;
-            @include transition(all 0.2s ease-in-out 0s);
-
-            &:hover {
-                color: #feda6a;
-            }
-        }
-
-        .card-view-title {
-            color: black;
-            font-weight: 600;
-        }
-
-        .fa-th-large {
-            color: #feda6a;
-        }
-
-        .fa-plus {
-            color: gray;
-            cursor: pointer;
-            @include transition(all 0.2s ease-in-out 0s);
-
-            &:hover {
-                color: #feda6a;
-            }
-        }
-    }
+    justify-content: flex-end;
+    margin-right: 25px;
 }
 
 .all-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .mat-card {
@@ -87,14 +34,16 @@
     font-weight: 600;
 }
 
-.fa-pencil-square-o {
-    font-size: 16px;
+.mat-icon {
     cursor: pointer;
+    font-size: 20px;
+    margin-left: 8px;
 }
 
 .mat-card-content {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     line-height: 22px;
     cursor: pointer;
 

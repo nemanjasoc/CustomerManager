@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
-import { CommunicationService } from 'src/app/service/communication.service';
 import { CustomerEditDialogComponent } from '../customer-edit/customer-edit-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
+import { CommunicationService } from 'src/app/service/communication.service';
 
 @Component({
   templateUrl: './customer-details.component.html',
@@ -47,7 +47,7 @@ export class CustomerDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.customer = this.communicationService.customerDetails;
+    this.customer = this.lsService.getCustomerDetails();
 
     navigator.geolocation.getCurrentPosition(position => {
       this.center = {
@@ -69,10 +69,6 @@ export class CustomerDetailsComponent implements OnInit {
     console.log(event)
   }
 
-  logCenter() {
-    console.log(JSON.stringify(this.map.getCenter()))
-  }
-
   addMarker() {
     this.markers.push({
       position: {
@@ -92,16 +88,14 @@ export class CustomerDetailsComponent implements OnInit {
     this.info.open(marker)
   }
 
-  openEditDialog(customerForEdit: Customer) {
-    this.communicationService.saveCustomerForEdit(customerForEdit);
-    
+  openEditDialog(customerForEdit: Customer) {  
     this.dialog.open(CustomerEditDialogComponent, {
-      height: '600px',
-      width: '600px'
-    }).afterClosed().subscribe(() => {
-      this.customers = this.lsService.getCustomers();
+      width: '600px',
+      data: customerForEdit
+    }).afterClosed().subscribe((result) => {
+      if(result) {
+        this.customers = this.lsService.getCustomers();
+      }
     });
-
-    this.communicationService.editCustomerIsOpen = true;
   }
 }

@@ -1,11 +1,12 @@
 <div class="map-container">
     <google-map
-        height="100vh"
+        height="100%"
         width="100%"
         [zoom]="zoom"
         [center]="center"
         [options]="options"
         (mapClick)="click($event)">
+
         <map-marker
             #markerElem
             *ngFor="let marker of markers"
@@ -15,12 +16,13 @@
             [options]="marker.options"
             (mapClick)="openInfo(markerElem, marker.info)">
         </map-marker>
+
         <map-info-window>{{infoContent}}</map-info-window>
+
         <div class="google-map-buttons">
-            <button (click)="zoomIn()">Zoom in</button>
-            <button (click)="zoomOut()">Zoom out</button> 
-            <button (click)="logCenter()">Log center</button>
-            <button (click)="addMarkers()">Add markers</button>
+            <button mat-raised-button (click)="zoomIn()">Zoom in</button>
+            <button mat-raised-button (click)="zoomOut()">Zoom out</button> 
+            <button mat-raised-button (click)="addMarkers()">Add markers</button>
         </div>
     </google-map>
 </div>

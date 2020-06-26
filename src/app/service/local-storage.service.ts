@@ -2,40 +2,71 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer.model';
 
 const customerLSKey = 'customers';
+const customerDetailsLSKey = 'customer';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 
 export class LocalStorageService {
 
-    getCustomers(): Customer[] {
-        let customers = localStorage.getItem(customerLSKey);
+  getCustomers(): Customer[] {
+    let customers = localStorage.getItem(customerLSKey);
 
-        return (customers) ? JSON.parse(customers) : [];
-    }
+    return (customers) ? JSON.parse(customers) : [];
+  }
 
-    setCustomers(customers: Customer[]) {
-        localStorage.setItem(customerLSKey, JSON.stringify(customers));
-    }
+  setCustomers(customers: Customer[]) {
+    localStorage.setItem(customerLSKey, JSON.stringify(customers));
+  }
 
-    saveCustomer(customer: Customer) {
-        const customers = this.getCustomers();
-        customer.id = this.createId(customers);
+  setCustomerDetails(customer: Customer) {
+    localStorage.setItem(customerDetailsLSKey, JSON.stringify(customer));
+  }
 
-        customers.push(customer);
-        this.setCustomers(customers);
-    }
+  getCustomerDetails(): Customer {
+    let customer = localStorage.getItem(customerDetailsLSKey);
 
-    createId(data: any[]): number {
-        let id = 0;
-        data.forEach(item => {
-            if (item.id > id) {
-                id = item.id;
-            }
-        });
+    return (customer) ? JSON.parse(customer) : [];
+  }
 
-        return ++id;
-    }
+  saveCustomer(customer: Customer) {
+    const customers = this.getCustomers();
+    customer.id = this.createId(customers);
+
+    customers.push(customer);
+    this.setCustomers(customers);
+  }
+
+  updateCustomer(customer: Customer) {
+    let allCustomers = this.getCustomers();
+    let customerForEdit = customer;
+    let newCustomers = [];
+
+    allCustomers.forEach(currentCustomer => {
+        if (currentCustomer.id === customerForEdit.id) {
+          newCustomers.push(customerForEdit)
+        } else {
+          newCustomers.push(currentCustomer)
+        }
+    })
+
+    this.setCustomers(newCustomers);
+  }
+
+  deleteCustomer(customer: Customer) {
+    // TODO: 
+  }
+
+  createId(data: any[]): number {
+    let id = 0;
+    data.forEach(item => {
+      if (item.id > id) {
+        id = item.id;
+      }
+    });
+
+    return ++id;
+  }
 
 }

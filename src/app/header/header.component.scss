@@ -1,12 +1,10 @@
 @import 'src/scss/variables';
-@import 'src/scss/mixins';
 
 header {
     height: 70px;
     width: 100%;
     background-color: $base-color;
     display: flex;
-    border-bottom: 2px solid #feda6a;
 }
 
 .header-content {
@@ -18,40 +16,4 @@ header {
 .header-title {
     color: white;
     font-size: 18px;
-}
-
-.home-link {
-    display: flex;
-    justify-content: center;
-    color: white;
-    width: 45px;
-    position: relative;
-    text-decoration: none;
-    padding: 0 25px;
-    cursor: pointer;
-    @include transition(all 0.2s ease-in-out 0s);
-
-    &:before {
-        content: '';
-        position: absolute;
-        width: 45px;
-        height: 2px;
-        top: 20px;
-        background-color: white;
-        visibility: hidden;
-        @include transform(scaleX(0));
-        @include transition(all 0.2s ease-in-out 0s);
-    }
-
-    &.active,
-    &:hover {
-        &:before {
-            visibility: visible;
-            @include transform(scaleX(1));
-        }
-    }
-
-    &.active {
-        color: white;
-    }
 }

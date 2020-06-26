@@ -53,10 +53,6 @@ export class CustomersMapComponent implements OnInit {
         console.log(event)
     }
   
-    logCenter() {
-        console.log(JSON.stringify(this.map.getCenter()))
-    }
-  
     addMarkers() {
         for (let i = 0; i < this.customers.length; i++) {
             let currentCustomer = this.customers[i];

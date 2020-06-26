@@ -1,0 +1,34 @@
+<div class="customers-nav">
+    <div class="title-wrapper">
+        <mat-icon class="customer-icon">person</mat-icon>
+        <span class="customers-title" *ngIf="router.url !== '/customer-details'">Customers</span>
+        <span class="customer-title" *ngIf="router.url === '/customer-details'">Customer</span>
+    </div>
+
+    <ul>
+        <li>
+            <button mat-raised-button routerLink="/customers-card">
+                <mat-icon>view_module</mat-icon>
+                <span>Card View</span>
+            </button>
+        </li>
+        <li>
+            <button mat-raised-button routerLink="/customers-table">
+                <mat-icon>reorder</mat-icon>
+                <span>List View</span>
+            </button>
+        </li>
+        <li>
+            <button mat-raised-button routerLink="/customers-map">
+                <mat-icon>location_on</mat-icon>
+                <span>Map View</span>
+            </button>
+        </li>
+        <li *ngIf="router.url !== '/customer-details'">
+            <button mat-raised-button (click)="openDialog()">
+                <mat-icon>add</mat-icon>
+                <span>New Customer</span>
+            </button>
+        </li>
+    </ul>
+</div>

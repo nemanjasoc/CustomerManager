@@ -1,49 +1,5 @@
 @import 'src/scss/mixins';
 
-.details-title {
-    margin: 20px;
-    font-size: 24px;
-}
-
-.customer-details-nav {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 0 25px;
-
-    li {
-        padding: 0 0 20px 25px;
-    }
-}
-
-.customer-details-nav {
-    .fa-list {
-        color: #feda6a;
-    }
-
-    .fa-pencil-square-o {
-        color: gray;
-        cursor: pointer;
-        @include transition(all 0.2s ease-in-out 0s);
-
-        &:hover {
-            color: #feda6a;
-        }
-    }
-}
-
-.customer-details-title {
-    margin-left: 8px;
-    color: black;
-    font-weight: 600;
-}
-
-.customer-edit-title {
-    margin-left: 8px;
-    color: gray;
-}
-
 .customer-informations-content {
     display: flex;
     align-items: center;
@@ -70,23 +26,19 @@
     font-size: 14px;
 }
 
-.map-containder {
+.map-container {
+    height: calc(100% - 271px);
     position: relative;
 }
 
 .google-map-buttons {
-    right: 1px;
-    position: absolute;
-    top: 380px;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0px;
+}
 
-    button {
-        margin: 5px 10px 0 0;
-        line-height: 32px;
-        width: 120px;
-        cursor: pointer;
-        background: white;
-        border: none;
-    }
+.mat-raised-button {
+    margin: 5px 10px 0 0;
 }
