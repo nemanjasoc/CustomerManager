@@ -5,6 +5,18 @@
         </div>
         <span class="header-title">Customer Manager</span>
     </div>
-    <!-- <a href="data:application/octet-stream;charset=utf-8;base64,Zm9vIGJhcg==">text file</a>  -->
-    <button><a title="Download JSON" [href]="downloadJsonHref" download="download.json"></a>Download JSON</button>
+
+    <div class="database">
+        <div class="export-customers">
+            <a [href]="downloadJsonHref" [download]="fileName" (click)="downloadCustomersDB()">
+                <i class="fa fa-database" aria-hidden="true"></i>
+            </a>
+            <span class="db-export-title">Export <br> customers</span>
+        </div>
+
+        <div class="form-group">
+            <input type="file" id="file" (change)="importCustomersDB($event.target.files)">
+            <span class="db-import-title">Import <br> customers</span>
+        </div>
+    </div>
 </header>

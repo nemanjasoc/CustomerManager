@@ -39,7 +39,12 @@ export class CustomersMapComponent implements OnInit {
                 lng: position.coords.longitude,
             }
         })
+
+        setTimeout(() => {
+            this.addMarkers();
+        }, 1000);
     }
+
   
     zoomIn() {
         if (this.zoom < this.options.maxZoom) this.zoom++
@@ -61,9 +66,6 @@ export class CustomersMapComponent implements OnInit {
                 position: {
                     lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
                     lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
-                },
-                label: {
-                    color: 'red'
                 },
                 title: 'Marker title ' + (this.markers.length + 1),
                 info: `Customer Name: ${currentCustomer.firstName} ${currentCustomer.lastName}, Customer Address: ${currentCustomer.address},  ${currentCustomer.city}, ${currentCustomer.state}`

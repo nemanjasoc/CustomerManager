@@ -15,15 +15,12 @@ import { CommunicationService } from 'src/app/service/communication.service';
   styleUrls: ['./customers-table.component.scss']
 })
 export class CustomersTableComponent implements OnInit {
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  
-  customers: Customer[] = [];
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
+  displayedColumns: string[] = ['gender', 'firstName', 'lastName', 'address', 'city', 'state', 'actions'];
+  dataSource = new MatTableDataSource<Customer>();
 
   subscribeToNewCustomerIsAddedSubscription: Subscription;
-
-  displayedColumns: string[] = ['gender', 'firstName', 'lastName', 'address', 'city', 'state', 'id'];
-  public dataSource = new MatTableDataSource<Customer>();
-
 
   constructor(public dialog: MatDialog,
     public communicationService: CommunicationService,
@@ -31,10 +28,14 @@ export class CustomersTableComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.customers = this.lsService.getCustomers();
-    this.dataSource.data = this.customers;
+    this.refreshData();
     this.dataSource.sort = this.sort;
     this.subscribeToNewCustomerIsAdded();
+  }
+
+
+  refreshData() {
+    this.dataSource.data = this.lsService.getCustomers();
   }
 
   applyFilter(event: Event) {
@@ -44,34 +45,26 @@ export class CustomersTableComponent implements OnInit {
 
   subscribeToNewCustomerIsAdded() {
     this.subscribeToNewCustomerIsAddedSubscription = this.communicationService.newCustomerIsAddedObservable()
-    .subscribe(result => {
-        this.customers = this.lsService.getCustomers();
-    })
+      .subscribe(() => {
+        this.refreshData();
+      })
   }
 
-  openEditDialog(customerForEditId?: number) {
+  openEditDialog(customer: Customer) {
     this.dialog.open(CustomerEditDialogComponent, {
       width: '500px',
       height: '500px',
+      data: { ...customer }
     }).afterClosed().subscribe((result) => {
       if (result) {
-        this.customers = this.lsService.getCustomers();
+        this.refreshData();
       }
     });
   }
 
-  deleteCustomer(customerForDeleteId: number) {
-    let allCustomers = this.lsService.getCustomers();
-    let newCustomers = [];
-
-    allCustomers.forEach(currentCustomer => {
-      if (currentCustomer.id !== customerForDeleteId) {
-        newCustomers.push(currentCustomer)
-      }
-    })
-    
-    this.lsService.setCustomers(newCustomers);
-    this.customers = this.lsService.getCustomers();
+  deleteCustomer(id: number) {
+    this.lsService.deleteCustomer(id);
+    this.refreshData();
   }
 
 }

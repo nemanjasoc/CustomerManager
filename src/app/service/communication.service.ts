@@ -9,13 +9,13 @@ import { Customer } from '../models/customer.model';
 export class CommunicationService {
     customerDetails: Customer;
     
-    private newCustomerIsAdded = new Subject<string>();
+    private newCustomerIsAdded = new Subject<any>();
 
 
     constructor() { }
     
 
-    newCustomerIsAddedObservable(): Observable<string> {
+    newCustomerIsAddedObservable(): Observable<any> {
         return this.newCustomerIsAdded.asObservable();
     }
     

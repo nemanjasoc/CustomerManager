@@ -9,7 +9,7 @@
             <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
             <div>
                 <mat-icon color="primary" (click)="openEditDialog(customer)">edit</mat-icon>
-                <mat-icon color="warn" (click)="deleteCustomer(customer)">delete</mat-icon>
+                <mat-icon color="warn" (click)="deleteCustomer(customer.id)">delete</mat-icon>
             </div>
         </div>
         <mat-card-content routerLink="/customer-details" (click)="openCustomerDetails(customer)">

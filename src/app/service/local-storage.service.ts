@@ -54,8 +54,10 @@ export class LocalStorageService {
     this.setCustomers(newCustomers);
   }
 
-  deleteCustomer(customer: Customer) {
-    // TODO: 
+  deleteCustomer(id: number) {
+    let allCustomers = this.getCustomers();
+    allCustomers = allCustomers.filter(item => item.id !== id);
+    this.setCustomers(allCustomers);
   }
 
   createId(data: any[]): number {

@@ -12,9 +12,9 @@ import { CommunicationService } from '../service/communication.service';
 })
 export class NavigationComponent implements OnInit {
     customers: Customer[] = [];
-    
 
-    constructor(public router: Router, 
+
+    constructor(public router: Router,
         public dialog: MatDialog,
         public communicationService: CommunicationService) { }
 
@@ -22,11 +22,10 @@ export class NavigationComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    openDialog(customerForEdit?: Customer) {
+    openAddNewCustomerDialog() {
         this.dialog.open(CustomerEditDialogComponent, {
             width: '500px',
             height: '500px',
-            data: customerForEdit ? { ...customerForEdit } : null
         }).afterClosed().subscribe((result) => {
             if (result) {
                 this.communicationService.newCustomerIsAddedNotify();

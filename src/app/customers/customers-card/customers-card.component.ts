@@ -14,6 +14,8 @@ export class CustomersCardComponent implements OnInit {
   customers: Customer[] = [];
   filteredCustomers: Customer[] = [];
 
+  searchText: string;
+
   subscribeToNewCustomerIsAddedSubscription: Subscription;
 
 
@@ -23,17 +25,20 @@ export class CustomersCardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.customers = this.lsService.getCustomers();
-    this.filteredCustomers = this.customers;
+    this.subscribeToNewCustomerIsAdded();
+    this.refreshData();
   }
 
   subscribeToNewCustomerIsAdded() {
     this.subscribeToNewCustomerIsAddedSubscription = this.communicationService.newCustomerIsAddedObservable()
-    .subscribe(result => {
-      if (!result) {
-        this.filteredCustomers = this.lsService.getCustomers();
-      }
+    .subscribe(() => {
+      this.refreshData();
     })
+  }
+
+  refreshData() {
+    this.customers = this.lsService.getCustomers();
+    this.applyFilter(this.searchText);
   }
 
   openEditDialog(customerForEdit?: Customer) {
@@ -43,23 +48,14 @@ export class CustomersCardComponent implements OnInit {
       data: customerForEdit ? { ...customerForEdit } : null
     }).afterClosed().subscribe((result) => {
       if (result) {
-        this.filteredCustomers = this.lsService.getCustomers();
+        this.refreshData();
       }
     });
   }
 
-  deleteCustomer(customerForDelete: Customer) {
-    let allCustomers = this.lsService.getCustomers();
-    let newCustomers = [];
-
-    allCustomers.forEach(currentCustomer => {
-      if (currentCustomer.id !== customerForDelete.id) {
-        newCustomers.push(currentCustomer)
-      }
-    })
-
-    this.lsService.setCustomers(newCustomers);
-    this.filteredCustomers = this.lsService.getCustomers();
+  deleteCustomer(id: number) {
+    this.lsService.deleteCustomer(id);
+    this.refreshData();
   }
 
   openCustomerDetails(customerDetails: Customer) {
@@ -67,8 +63,11 @@ export class CustomersCardComponent implements OnInit {
   }
 
   searchCustomer(event): void {
-    let searchText = event.target.value;
+    this.searchText = event.target.value;
+    this.applyFilter(this.searchText);
+  }
 
+  applyFilter(searchText: string) {
     if (!searchText || !searchText.length) {
       this.filteredCustomers = this.customers;
       return
@@ -81,5 +80,4 @@ export class CustomersCardComponent implements OnInit {
         (item.state).toLocaleLowerCase().includes(searchText.toLocaleLowerCase());
     })
   }
-
 }
