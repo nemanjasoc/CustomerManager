@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Customer } from '../models/customer.model';
-import { CustomerEditDialogComponent } from '../customer/customer-edit/customer-edit-dialog.component';
+import { CustomerEditDialogComponent } from '../customer/customer-edit-dialog/customer-edit-dialog.component';
 import { CommunicationService } from '../service/communication.service';
 
 @Component({

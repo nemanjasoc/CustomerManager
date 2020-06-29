@@ -1,23 +1,28 @@
-<mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="searchCustomer($event)">
-</mat-form-field>
+<div class="cards-container">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="searchCustomer($event)">
+    </mat-form-field>
 
-<div class="all-cards">
-    <mat-card *ngFor="let customer of filteredCustomers">
-        <div class="card-header">
-            <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
-            <div>
-                <mat-icon color="primary" (click)="openEditDialog(customer)">edit</mat-icon>
-                <mat-icon color="warn" (click)="deleteCustomer(customer.id)">delete</mat-icon>
+    <div class="all-cards">
+        <span class="error-message" *ngIf="!customers.length">
+            Customer doesn't exist!
+        </span>
+        <mat-card *ngFor="let customer of filteredCustomers">
+            <div class="card-header">
+                <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>
+                <div>
+                    <mat-icon color="primary" (click)="openEditDialog(customer)">edit</mat-icon>
+                    <mat-icon color="warn" (click)="deleteCustomer(customer.id)">delete</mat-icon>
+                </div>
             </div>
-        </div>
-        <mat-card-content routerLink="/customer-details" (click)="openCustomerDetails(customer)">
-            <img mat-card-image src="{{'../../../assets/images/'+ customer.gender +'.png'}}" alt="{{customer.gender}}">
-            <div class="customer-info">
-                <span>{{ customer.city }}</span>
-                <span>{{ customer.state }}</span>
-            </div>
-        </mat-card-content>
-    </mat-card>
+            <mat-card-content routerLink="/customer-details" (click)="openCustomerDetails(customer)">
+                <img mat-card-image src="{{'../../../assets/images/'+ customer.gender +'.png'}}" alt="{{customer.gender}}">
+                <div class="customer-info">
+                    <span>{{ customer.city }}</span>
+                    <span>{{ customer.state }}</span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

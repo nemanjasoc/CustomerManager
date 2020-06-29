@@ -1,3 +1,7 @@
+.table-container {
+    position: relative;
+}
+
 .mat-form-field {
     display: flex;
     justify-content: flex-end;
@@ -27,4 +31,14 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 
 .mat-icon.mat-warn {
     margin-left: 10px;
+}
+
+.error-message {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

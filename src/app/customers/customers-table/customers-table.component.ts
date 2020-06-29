@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
-import { Customer } from 'src/app/models/customer.model';
+import { Customer } from '../../models/customer.model';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditDialogComponent } from 'src/app/customer/customer-edit/customer-edit-dialog.component';
+import { CustomerEditDialogComponent } from 'src/app/customer/customer-edit-dialog/customer-edit-dialog.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';

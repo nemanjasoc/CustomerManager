@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { CustomersCardComponent } from './customers/customers-card/customers-card.component';
-import { CustomerEditDialogComponent } from './customer/customer-edit/customer-edit-dialog.component';
+import { CustomerEditDialogComponent } from './customer/customer-edit-dialog/customer-edit-dialog.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { CustomersTableComponent } from './customers/customers-table/customers-table.component';
 import { CustomersMapComponent } from './customers/customers-map/customers-map.component';

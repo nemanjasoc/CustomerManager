@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
-import { Customer } from 'src/app/models/customer.model';
+import { Customer } from '../../models/customer.model';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 
 @Component({

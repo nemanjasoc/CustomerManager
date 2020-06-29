@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditDialogComponent } from 'src/app/customer/customer-edit/customer-edit-dialog.component';
-import { Customer } from 'src/app/models/customer.model';
+import { CustomerEditDialogComponent } from 'src/app/customer/customer-edit-dialog/customer-edit-dialog.component';
+import { Customer } from '../../models/customer.model';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { CommunicationService } from 'src/app/service/communication.service';
 import { Subscription } from 'rxjs';

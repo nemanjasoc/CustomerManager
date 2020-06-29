@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
-import { Customer } from 'src/app/models/customer.model';
-import { CustomerEditDialogComponent } from '../customer-edit/customer-edit-dialog.component';
+import { Customer } from '../../models/customer.model';
+import { CustomerEditDialogComponent } from '../customer-edit-dialog/customer-edit-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
