@@ -9,18 +9,18 @@ import { Customer } from '../models/customer.model';
 export class CommunicationService {
     customerDetails: Customer;
     
-    private newCustomerIsAdded = new Subject<any>();
+    private databaseDataHasChanged = new Subject<any>();
 
 
     constructor() { }
     
 
-    newCustomerIsAddedObservable(): Observable<any> {
-        return this.newCustomerIsAdded.asObservable();
+    databaseDataHasChangedObservable(): Observable<any> {
+        return this.databaseDataHasChanged.asObservable();
     }
     
-    newCustomerIsAddedNotify() {
-        this.newCustomerIsAdded.next()
+    databaseDataHasChangedNotify() {
+        this.databaseDataHasChanged.next()
     }
 
     saveCustomerDetails(customerDetails: Customer) {

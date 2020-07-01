@@ -28,7 +28,7 @@ export class NavigationComponent implements OnInit {
             height: '500px',
         }).afterClosed().subscribe((result) => {
             if (result) {
-                this.communicationService.newCustomerIsAddedNotify();
+                this.communicationService.databaseDataHasChangedNotify();
             }
         });
     }

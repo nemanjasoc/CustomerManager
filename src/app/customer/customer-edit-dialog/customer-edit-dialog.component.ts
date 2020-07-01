@@ -16,7 +16,7 @@ export class CustomerEditDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Customer,
     private lsService: LocalStorageService) {
 
-      if(data) {
+      if (data) {
         this.customer = data;
         this.isEditMode = true;
       } else {
@@ -25,9 +25,9 @@ export class CustomerEditDialogComponent {
       }
   }
 
-  
+
   onClickSave() {
-    if(this.isEditMode) {
+    if (this.isEditMode) {
       this.lsService.updateCustomer(this.customer);
     } else {
       this.lsService.saveCustomer(this.customer);

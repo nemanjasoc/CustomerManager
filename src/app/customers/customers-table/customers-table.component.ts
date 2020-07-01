@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { Customer } from '../../models/customer.model';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditDialogComponent } from 'src/app/customer/customer-edit-dialog/customer-edit-dialog.component';
+import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
+import { CustomerDeleteDialogComponent } from '../../customer/customer-delete-dialog/customer-delete-dialog.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { CommunicationService } from 'src/app/service/communication.service';
-
 
 @Component({
   selector: 'app-customers-table',
@@ -20,7 +20,7 @@ export class CustomersTableComponent implements OnInit {
   displayedColumns: string[] = ['gender', 'firstName', 'lastName', 'address', 'city', 'state', 'actions'];
   dataSource = new MatTableDataSource<Customer>();
 
-  subscribeToNewCustomerIsAddedSubscription: Subscription;
+  subscribeToDatabaseDataHasChangedSubscription: Subscription;
 
   constructor(public dialog: MatDialog,
     public communicationService: CommunicationService,
@@ -30,9 +30,8 @@ export class CustomersTableComponent implements OnInit {
   ngOnInit(): void {
     this.refreshData();
     this.dataSource.sort = this.sort;
-    this.subscribeToNewCustomerIsAdded();
+    this.subscribeToDatabaseDataHasChanged();
   }
-
 
   refreshData() {
     this.dataSource.data = this.lsService.getCustomers();
@@ -43,8 +42,8 @@ export class CustomersTableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  subscribeToNewCustomerIsAdded() {
-    this.subscribeToNewCustomerIsAddedSubscription = this.communicationService.newCustomerIsAddedObservable()
+  subscribeToDatabaseDataHasChanged() {
+    this.subscribeToDatabaseDataHasChangedSubscription = this.communicationService.databaseDataHasChangedObservable()
       .subscribe(() => {
         this.refreshData();
       })
@@ -62,9 +61,16 @@ export class CustomersTableComponent implements OnInit {
     });
   }
 
-  deleteCustomer(id: number) {
-    this.lsService.deleteCustomer(id);
-    this.refreshData();
+  openDeleteDialog(customerForDelete: Customer) {
+    this.dialog.open(CustomerDeleteDialogComponent, {
+      width: '280px',
+      height: '150px',
+      data: { ...customerForDelete }
+    }).afterClosed().subscribe((result) => {
+      if (result) {
+        this.refreshData();
+      }
+    });
   }
 
 }

@@ -3,15 +3,35 @@ import { Customer } from '../models/customer.model';
 
 const customerLSKey = 'customers';
 const customerDetailsLSKey = 'customer';
+const importedCustomersLSKey = 'imported-customers';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class LocalStorageService {
+  selectedFile: File = null;
+  importedCustomersString: any;
+  importedCustomers: Customer[];
 
   getCustomers(): Customer[] {
     let customers = localStorage.getItem(customerLSKey);
+
+    return (customers) ? JSON.parse(customers) : [];
+  }
+
+  getCustomer(id: number): Customer {
+    return null;
+  }
+
+  getCustomerDetails(): Customer {
+    let customer = localStorage.getItem(customerDetailsLSKey);
+
+    return (customer) ? JSON.parse(customer) : [];
+  }
+
+  getImportedCustomers(): Customer[] {
+    let customers = localStorage.getItem(importedCustomersLSKey);
 
     return (customers) ? JSON.parse(customers) : [];
   }
@@ -24,10 +44,8 @@ export class LocalStorageService {
     localStorage.setItem(customerDetailsLSKey, JSON.stringify(customer));
   }
 
-  getCustomerDetails(): Customer {
-    let customer = localStorage.getItem(customerDetailsLSKey);
-
-    return (customer) ? JSON.parse(customer) : [];
+  setImportedCustomers(customers: Customer[]) {
+    localStorage.setItem(importedCustomersLSKey , JSON.stringify(customers));
   }
 
   saveCustomer(customer: Customer) {
@@ -69,6 +87,27 @@ export class LocalStorageService {
     });
 
     return ++id;
+  }
+
+  importCustomersDB(files) {
+    this.selectedFile = files.item(0);
+    const fileReader = new FileReader();
+    
+    fileReader.readAsText(this.selectedFile, "UTF-8");
+
+    fileReader.onload = () => {
+      debugger;
+      // podici dijalog
+      this.importedCustomersString = fileReader.result;
+      this.importedCustomers = JSON.parse(this.importedCustomersString)
+      
+      this.setImportedCustomers(this.importedCustomers);
+    }
+
+    fileReader.onerror = (error) => {
+      console.log(error);
+    }
+    
   }
 
 }

@@ -24,15 +24,15 @@ export class CustomerDetailsComponent implements OnInit {
   }
   customers: Customer[] = [];
 
-  zoom = 12
+  zoom = 7
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
       zoomControl: false,
       scrollwheel: false,
       disableDoubleClickZoom: true,
       mapTypeId: 'roadmap',
-      maxZoom: 15,
-      minZoom: 8,
+      maxZoom: 18,
+      minZoom: 4,
   }
   markers = [];
   infoContent: string;
@@ -55,6 +55,11 @@ export class CustomerDetailsComponent implements OnInit {
           lng: position.coords.longitude,
       }
     })
+
+    setTimeout(() => {
+      this.addMarker();
+    }, 1000);
+    
   }
 
   zoomIn() {
@@ -75,9 +80,6 @@ export class CustomerDetailsComponent implements OnInit {
         lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
         lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
       },
-      label: {
-        color: 'red'
-      },
       info: `Customer Name: ${this.customer.firstName} ${this.customer.lastName}, Customer Address: ${this.customer.address},  ${this.customer.city}, ${this.customer.state}`
     })
     
@@ -87,15 +89,5 @@ export class CustomerDetailsComponent implements OnInit {
     this.infoContent = content
     this.info.open(marker)
   }
-
-  openEditDialog(customerForEdit: Customer) {  
-    this.dialog.open(CustomerEditDialogComponent, {
-      width: '600px',
-      data: customerForEdit
-    }).afterClosed().subscribe((result) => {
-      if(result) {
-        this.customers = this.lsService.getCustomers();
-      }
-    });
-  }
+  
 }

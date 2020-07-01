@@ -46,7 +46,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
                 <td mat-cell *matCellDef="let customer">
                     <mat-icon color="primary" (click)="openEditDialog(customer)">edit</mat-icon>
-                    <mat-icon color="warn" (click)="deleteCustomer(customer.id)">delete</mat-icon>
+                    <mat-icon color="warn" (click)="openDeleteDialog(customer)">delete</mat-icon>
                 </td>
             </ng-container>
 

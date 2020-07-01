@@ -39,6 +39,7 @@ header {
         text-decoration: none;
         color: white;
         @include transition(all 0.2s ease-in-out 0s);
+        color: #f44336;
     
         &:active {
             color: orange;
@@ -73,6 +74,7 @@ header {
     border: none;
     outline: none;
     cursor: pointer;
+    
     @include transition(all 0.2s ease-in-out 0s);
 
     &::-webkit-file-upload-button {
@@ -83,7 +85,7 @@ header {
         font-family: FontAwesome;
         content: "\f1c0";
         font-size: 22px;
-        color: white
+        color: #3f51b5;
     }
 
     &:active::before {

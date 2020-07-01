@@ -13,15 +13,15 @@ export class CustomersMapComponent implements OnInit {
     @ViewChild(GoogleMap, { static: false }) map: GoogleMap
     @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
   
-    zoom = 12
+    zoom = 7
     center: google.maps.LatLngLiteral
     options: google.maps.MapOptions = {
         zoomControl: false,
         scrollwheel: false,
         disableDoubleClickZoom: true,
         mapTypeId: 'roadmap',
-        maxZoom: 15,
-        minZoom: 8,
+        maxZoom: 18,
+        minZoom: 4,
     }
     markers = [];
     infoContent: string;
@@ -44,8 +44,7 @@ export class CustomersMapComponent implements OnInit {
             this.addMarkers();
         }, 1000);
     }
-
-  
+    
     zoomIn() {
         if (this.zoom < this.options.maxZoom) this.zoom++
     }

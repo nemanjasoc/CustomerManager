@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditDialogComponent } from 'src/app/customer/customer-edit-dialog/customer-edit-dialog.component';
+import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
+import { CustomerDeleteDialogComponent } from '../../customer/customer-delete-dialog/customer-delete-dialog.component';
 import { Customer } from '../../models/customer.model';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { CommunicationService } from 'src/app/service/communication.service';
@@ -16,7 +17,7 @@ export class CustomersCardComponent implements OnInit {
 
   searchText: string;
 
-  subscribeToNewCustomerIsAddedSubscription: Subscription;
+  subscribeToDatabaseDataHasChangedSubscription: Subscription;
 
 
   constructor(public dialog: MatDialog, 
@@ -25,15 +26,15 @@ export class CustomersCardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.subscribeToNewCustomerIsAdded();
+    this.subscribeToDatabaseDataHasChanged();
     this.refreshData();
   }
 
-  subscribeToNewCustomerIsAdded() {
-    this.subscribeToNewCustomerIsAddedSubscription = this.communicationService.newCustomerIsAddedObservable()
-    .subscribe(() => {
-      this.refreshData();
-    })
+  subscribeToDatabaseDataHasChanged() {
+    this.subscribeToDatabaseDataHasChangedSubscription = this.communicationService.databaseDataHasChangedObservable()
+      .subscribe(() => {
+        this.refreshData();
+      })
   }
 
   refreshData() {
@@ -53,9 +54,16 @@ export class CustomersCardComponent implements OnInit {
     });
   }
 
-  deleteCustomer(id: number) {
-    this.lsService.deleteCustomer(id);
-    this.refreshData();
+  openDeleteDialog(customerForDelete: Customer) {
+    this.dialog.open(CustomerDeleteDialogComponent, {
+      width: '280px',
+      height: '150px',
+      data: { ...customerForDelete }
+    }).afterClosed().subscribe((result) => {
+      if (result) {
+        this.refreshData();
+      }
+    });
   }
 
   openCustomerDetails(customerDetails: Customer) {
