@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer.model';
 
 const customerLSKey = 'customers';
-const customerDetailsLSKey = 'customer';
-const importedCustomersLSKey = 'imported-customers';
 
 @Injectable({
   providedIn: 'root'
@@ -20,32 +18,8 @@ export class LocalStorageService {
     return (customers) ? JSON.parse(customers) : [];
   }
 
-  getCustomer(id: number): Customer {
-    return null;
-  }
-
-  getCustomerDetails(): Customer {
-    let customer = localStorage.getItem(customerDetailsLSKey);
-
-    return (customer) ? JSON.parse(customer) : [];
-  }
-
-  getImportedCustomers(): Customer[] {
-    let customers = localStorage.getItem(importedCustomersLSKey);
-
-    return (customers) ? JSON.parse(customers) : [];
-  }
-
   setCustomers(customers: Customer[]) {
     localStorage.setItem(customerLSKey, JSON.stringify(customers));
-  }
-
-  setCustomerDetails(customer: Customer) {
-    localStorage.setItem(customerDetailsLSKey, JSON.stringify(customer));
-  }
-
-  setImportedCustomers(customers: Customer[]) {
-    localStorage.setItem(importedCustomersLSKey , JSON.stringify(customers));
   }
 
   saveCustomer(customer: Customer) {
@@ -96,18 +70,28 @@ export class LocalStorageService {
     fileReader.readAsText(this.selectedFile, "UTF-8");
 
     fileReader.onload = () => {
-      debugger;
-      // podici dijalog
+      
       this.importedCustomersString = fileReader.result;
       this.importedCustomers = JSON.parse(this.importedCustomersString)
       
-      this.setImportedCustomers(this.importedCustomers);
     }
 
     fileReader.onerror = (error) => {
       console.log(error);
-    }
-    
+    } 
+  }
+
+  addNewImportedCustomers(customers: Customer[]) {
+    const lsCustomers = this.getCustomers(); 
+    customers.forEach(customer => {
+      const findCustomer = lsCustomers.find(lsCustomer => customer.id === lsCustomer.id);
+
+      if(!findCustomer) {
+        lsCustomers.push(customer);
+      }
+    });
+
+    this.setCustomers(lsCustomers);
   }
 
 }

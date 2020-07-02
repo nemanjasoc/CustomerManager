@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'customers-card', component: CustomersCardComponent },
   { path: 'customers-table', component: CustomersTableComponent },
   { path: 'customers-map', component: CustomersMapComponent },
-  { path: 'customer-details', component: CustomerDetailsComponent },
+  { path: 'customer-details/:customerId', component: CustomerDetailsComponent },
   { path: '', redirectTo: 'customers-card', pathMatch: 'full' },
   { path: '**', redirectTo: 'customers-card', pathMatch: 'full'}
 ];

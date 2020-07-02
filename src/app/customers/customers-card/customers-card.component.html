@@ -16,7 +16,7 @@
                     <mat-icon color="warn" (click)="openDeleteDialog(customer)">delete</mat-icon>
                 </div>
             </div>
-            <mat-card-content routerLink="/customer-details" (click)="openCustomerDetails(customer)">
+            <mat-card-content [routerLink]="['/customer-details', customer.id]">
                 <img mat-card-image src="{{'../../../assets/images/'+ customer.gender +'.png'}}" alt="{{customer.gender}}">
                 <div class="customer-info">
                     <span>{{ customer.city }}</span>

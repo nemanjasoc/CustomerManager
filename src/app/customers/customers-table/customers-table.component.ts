@@ -3,11 +3,11 @@ import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { Customer } from '../../models/customer.model';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
-import { CustomerDeleteDialogComponent } from '../../customer/customer-delete-dialog/customer-delete-dialog.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { CommunicationService } from 'src/app/service/communication.service';
+import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-customers-table',
@@ -62,12 +62,14 @@ export class CustomersTableComponent implements OnInit {
   }
 
   openDeleteDialog(customerForDelete: Customer) {
-    this.dialog.open(CustomerDeleteDialogComponent, {
-      width: '280px',
-      height: '150px',
-      data: { ...customerForDelete }
+    this.dialog.open(ConfirmDialogComponent, {
+      data: <ConfirmDialogData>{
+        title: `Delete customer`,
+        subtitle: 'Are you sure you want to delete this customer?'
+      }
     }).afterClosed().subscribe((result) => {
       if (result) {
+        this.lsService.deleteCustomer(customerForDelete.id);
         this.refreshData();
       }
     });

@@ -17,12 +17,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { CustomersCardComponent } from './customers/customers-card/customers-card.component';
-import { CustomerDeleteDialogComponent } from './customer/customer-delete-dialog/customer-delete-dialog.component';
 import { CustomerEditDialogComponent } from './customer/customer-edit-dialog/customer-edit-dialog.component';
 import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
 import { CustomersTableComponent } from './customers/customers-table/customers-table.component';
 import { CustomersMapComponent } from './customers/customers-map/customers-map.component';
-import { CustomersImportDialogComponent } from './customers/customers-import-dialog/customers-import-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +29,11 @@ import { CustomersImportDialogComponent } from './customers/customers-import-dia
     HeaderComponent,
     NavigationComponent,
     CustomersCardComponent,
-    CustomerDeleteDialogComponent,
     CustomerEditDialogComponent,
     CustomerDetailsComponent,
     CustomersTableComponent,
     CustomersMapComponent,
-    CustomersImportDialogComponent
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

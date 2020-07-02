@@ -10,9 +10,6 @@ export class CommunicationService {
     customerDetails: Customer;
     
     private databaseDataHasChanged = new Subject<any>();
-
-
-    constructor() { }
     
 
     databaseDataHasChangedObservable(): Observable<any> {

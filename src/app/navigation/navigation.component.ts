@@ -10,7 +10,7 @@ import { CommunicationService } from '../service/communication.service';
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
     customers: Customer[] = [];
 
 
@@ -18,9 +18,6 @@ export class NavigationComponent implements OnInit {
         public dialog: MatDialog,
         public communicationService: CommunicationService) { }
 
-
-    ngOnInit(): void {
-    }
 
     openAddNewCustomerDialog() {
         this.dialog.open(CustomerEditDialogComponent, {

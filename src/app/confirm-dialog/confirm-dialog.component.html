@@ -1,0 +1,10 @@
+<div>
+    <h3 mat-dialog-title>
+        <strong>{{data.title}}</strong>
+    </h3>
+    <p>{{data.subtitle}}</p>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close type="button">Cancel</button>
+        <button mat-button color="primary" mat-dialog-submit (click)="onConfirmClick()">Yes</button>
+    </div>
+</div>

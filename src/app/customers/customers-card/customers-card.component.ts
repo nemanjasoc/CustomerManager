@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
-import { CustomerDeleteDialogComponent } from '../../customer/customer-delete-dialog/customer-delete-dialog.component';
 import { Customer } from '../../models/customer.model';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { CommunicationService } from 'src/app/service/communication.service';
 import { Subscription } from 'rxjs';
+import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 @Component({
   templateUrl: './customers-card.component.html',
@@ -20,7 +20,7 @@ export class CustomersCardComponent implements OnInit {
   subscribeToDatabaseDataHasChangedSubscription: Subscription;
 
 
-  constructor(public dialog: MatDialog, 
+  constructor(public dialog: MatDialog,
     public communicationService: CommunicationService,
     private lsService: LocalStorageService) { }
 
@@ -55,19 +55,17 @@ export class CustomersCardComponent implements OnInit {
   }
 
   openDeleteDialog(customerForDelete: Customer) {
-    this.dialog.open(CustomerDeleteDialogComponent, {
-      width: '280px',
-      height: '150px',
-      data: { ...customerForDelete }
+    this.dialog.open(ConfirmDialogComponent, {
+      data: <ConfirmDialogData>{
+        title: `Delete customer`,
+        subtitle: 'Are you sure you want to delete this customer?'
+      }
     }).afterClosed().subscribe((result) => {
       if (result) {
+        this.lsService.deleteCustomer(customerForDelete.id);
         this.refreshData();
       }
     });
-  }
-
-  openCustomerDetails(customerDetails: Customer) {
-    this.lsService.setCustomerDetails(customerDetails);
   }
 
   searchCustomer(event): void {

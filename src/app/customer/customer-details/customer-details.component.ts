@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Customer } from '../../models/customer.model';
-import { CustomerEditDialogComponent } from '../customer-edit-dialog/customer-edit-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 import { CommunicationService } from 'src/app/service/communication.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './customer-details.component.html',
@@ -22,7 +22,9 @@ export class CustomerDetailsComponent implements OnInit {
     city: '',
     state: ''
   }
-  customers: Customer[] = [];
+
+  customers: Customer[];
+  urlCustomerId: number;
 
   zoom = 7
   center: google.maps.LatLngLiteral
@@ -43,11 +45,13 @@ export class CustomerDetailsComponent implements OnInit {
 
   constructor(public dialog: MatDialog, 
     public communicationService: CommunicationService,
-    private lsService: LocalStorageService) {}
+    private lsService: LocalStorageService, 
+    private route: ActivatedRoute) {}
 
 
   ngOnInit(): void {
-    this.customer = this.lsService.getCustomerDetails();
+    this.getCustomerById();
+    this.getCustomerDetails();
 
     navigator.geolocation.getCurrentPosition(position => {
       this.center = {
@@ -60,6 +64,19 @@ export class CustomerDetailsComponent implements OnInit {
       this.addMarker();
     }, 1000);
     
+  }
+
+  getCustomerById() {
+    this.route.params.subscribe(params => {
+      this.urlCustomerId = Number(params.customerId);
+    });
+  }
+
+  getCustomerDetails() {
+    const customers = this.lsService.getCustomers();
+
+    const findCustomer = customers.find(customer => customer.id === this.urlCustomerId);
+    this.customer = findCustomer;
   }
 
   zoomIn() {
