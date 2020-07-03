@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-            <input type="file" id="file" (change)="openCustomersImportDialog($event.target.files)">
+            <input type="file" id="file" #myFileInput (change)="openCustomersImportDialog($event.target.files)" accept=".json">
             <span class="db-import-title">Import <br> customers</span>
         </div>
     </div>

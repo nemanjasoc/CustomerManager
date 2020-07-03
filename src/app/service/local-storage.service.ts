@@ -70,10 +70,8 @@ export class LocalStorageService {
     fileReader.readAsText(this.selectedFile, "UTF-8");
 
     fileReader.onload = () => {
-      
       this.importedCustomersString = fileReader.result;
-      this.importedCustomers = JSON.parse(this.importedCustomersString)
-      
+      this.importedCustomers = JSON.parse(this.importedCustomersString);
     }
 
     fileReader.onerror = (error) => {
@@ -81,9 +79,10 @@ export class LocalStorageService {
     } 
   }
 
-  addNewImportedCustomers(customers: Customer[]) {
+  addNewImportedCustomers(customersForImport: Customer[]) {
     const lsCustomers = this.getCustomers(); 
-    customers.forEach(customer => {
+
+    customersForImport.forEach(customer => {
       const findCustomer = lsCustomers.find(lsCustomer => customer.id === lsCustomer.id);
 
       if(!findCustomer) {

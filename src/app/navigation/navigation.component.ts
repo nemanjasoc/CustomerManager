@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { Customer } from '../models/customer.model';
 import { CustomerEditDialogComponent } from '../customer/customer-edit-dialog/customer-edit-dialog.component';
 import { CommunicationService } from '../service/communication.service';
 
@@ -11,7 +10,6 @@ import { CommunicationService } from '../service/communication.service';
     styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
-    customers: Customer[] = [];
 
 
     constructor(public router: Router,

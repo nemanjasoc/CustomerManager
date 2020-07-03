@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { LocalStorageService } from '../service/local-storage.service';
@@ -14,6 +14,8 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../confirm-dialog/con
 export class HeaderComponent {
   downloadJsonHref: any;
   fileName: any;
+
+  @ViewChild('myFileInput') myFileInput;
 
   constructor(public dialog: MatDialog,
     public communicationService: CommunicationService,
@@ -48,8 +50,9 @@ export class HeaderComponent {
         }
         this.communicationService.databaseDataHasChangedNotify();
       });
-    });
 
+      this.myFileInput.nativeElement.value = '';
+    });
 
   }
 
