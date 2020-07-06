@@ -8,6 +8,7 @@
         <span class="error-message" *ngIf="!customers.length">
             Customer doesn't exist!
         </span>
+        
         <mat-card *ngFor="let customer of filteredCustomers">
             <div class="card-header">
                 <span class="customer-name">{{ customer.firstName + ' ' + customer.lastName}}</span>

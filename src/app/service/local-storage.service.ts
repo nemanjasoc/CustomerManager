@@ -25,35 +25,46 @@ export class LocalStorageService {
   saveCustomer(customer: Customer) {
     const customers = this.getCustomers();
     customer.id = this.createId(customers);
+    
+    const findCustomer = customers.find(lsCustomer => customer.email === lsCustomer.email);
 
-    customers.push(customer);
+    if(!findCustomer) {
+      customers.push(customer);
+    } else {
+      alert('Created customer email alredy exist in database!')
+    }
+    
     this.setCustomers(customers);
   }
 
-  updateCustomer(customer: Customer) {
+  updateCustomer(customerForEdit: Customer) {
     let allCustomers = this.getCustomers();
-    let customerForEdit = customer;
     let newCustomers = [];
 
     allCustomers.forEach(currentCustomer => {
-        if (currentCustomer.id === customerForEdit.id) {
-          newCustomers.push(customerForEdit)
-        } else {
-          newCustomers.push(currentCustomer)
-        }
+      if (currentCustomer.id === customerForEdit.id && currentCustomer.email !== customerForEdit.email) {
+        newCustomers.push(customerForEdit)
+      } else if (currentCustomer.email === customerForEdit.email) {
+        alert('Created customer email alredy exist in database!')
+        newCustomers.push(currentCustomer)
+      } else {
+        newCustomers.push(currentCustomer)
+      }
+ 
     })
 
     this.setCustomers(newCustomers);
   }
 
-  deleteCustomer(id: number) {
-    let allCustomers = this.getCustomers();
-    allCustomers = allCustomers.filter(item => item.id !== id);
-    this.setCustomers(allCustomers);
+  deleteCustomer(customer: Customer) {
+    let lsCustomers = this.getCustomers();
+    lsCustomers = lsCustomers.filter(lsCustomer => lsCustomer.email !== customer.email);
+    this.setCustomers(lsCustomers);
   }
 
   createId(data: any[]): number {
     let id = 0;
+    
     data.forEach(item => {
       if (item.id > id) {
         id = item.id;
@@ -83,7 +94,7 @@ export class LocalStorageService {
     const lsCustomers = this.getCustomers(); 
 
     customersForImport.forEach(customer => {
-      const findCustomer = lsCustomers.find(lsCustomer => customer.id === lsCustomer.id);
+      const findCustomer = lsCustomers.find(lsCustomer => customer.email === lsCustomer.email);
 
       if(!findCustomer) {
         lsCustomers.push(customer);

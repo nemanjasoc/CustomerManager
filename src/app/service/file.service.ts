@@ -8,7 +8,6 @@ import { Customer } from '../models/customer.model';
 
 export class FileService {
 
-
   getFileContent(file: File): Observable<Customer[]> {
     return new Observable(subscriber => {
       const fileReader = new FileReader();

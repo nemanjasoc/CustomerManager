@@ -4,7 +4,7 @@
 header {
     height: 70px;
     width: 100%;
-    background-color: #393f4d;
+    background-color: $base-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,7 +74,6 @@ header {
     border: none;
     outline: none;
     cursor: pointer;
-    
     @include transition(all 0.2s ease-in-out 0s);
 
     &::-webkit-file-upload-button {

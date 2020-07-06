@@ -16,6 +16,7 @@ export class HeaderComponent {
   fileName: any;
 
   @ViewChild('myFileInput') myFileInput;
+  
 
   constructor(public dialog: MatDialog,
     public communicationService: CommunicationService,
@@ -36,24 +37,42 @@ export class HeaderComponent {
   }
 
   openCustomersImportDialog(files) {
-    this.dialog.open(ConfirmDialogComponent, {
-      data: <ConfirmDialogData>{
-        title: `Import Data Base`,
-        subtitle: `Do you want remove old data before import new one?`,
-      }
-    }).afterClosed().subscribe((result) => {
-      this.fileService.getFileContent(files[0]).subscribe(data => {
-        if (result) {
-          this.lsService.setCustomers(data);
-        } else {
-          this.lsService.addNewImportedCustomers(data);
+    let lsCustomers = this.lsService.getCustomers();
+
+    if (lsCustomers.length > 0) {
+      this.dialog.open(ConfirmDialogComponent, {
+        data: <ConfirmDialogData>{
+          title: `Import Data Base`,
+          subtitle: `Do you want remove old data before import new one?`,
         }
-        this.communicationService.databaseDataHasChangedNotify();
+      }).afterClosed().subscribe((result) => {
+        this.fileService.getFileContent(files[0]).subscribe(data => {
+          if (result) {
+            this.lsService.setCustomers(data);
+          } else {
+            this.lsService.addNewImportedCustomers(data);
+          }
+          this.communicationService.databaseDataHasChangedNotify();
+        });
+
+        this.myFileInput.nativeElement.value = '';
       });
-
-      this.myFileInput.nativeElement.value = '';
-    });
-
+    }
+    else {
+      this.dialog.open(ConfirmDialogComponent, {
+        data: <ConfirmDialogData>{
+          title: `Import Data Base`,
+        }
+      }).afterClosed().subscribe((result) => {
+        this.fileService.getFileContent(files[0]).subscribe(data => {
+          if (result) {
+            this.lsService.setCustomers(data);
+          }
+          this.communicationService.databaseDataHasChangedNotify();
+        });
+        this.myFileInput.nativeElement.value = '';
+      });
+    }
   }
 
 }

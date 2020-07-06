@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~font-awesome/css/font-awesome.min.css";
-@import 'src/scss/variables';
 
 html, body { 
     height: 100%; 
@@ -23,18 +22,6 @@ li {
 
 .mat-dialog-container {
     padding: 25px 50px !important;
-}
-
-.mat-radio-label {
-    margin-bottom: 4px;
-}
-
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-    border-color: #3f51b5;
-}
-
-.mat-radio-button.mat-accent .mat-radio-inner-circle {
-    background-color: #3f51b5;
 }
 
 .mat-sort-header-button {

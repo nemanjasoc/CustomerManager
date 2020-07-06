@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LocalStorageService } from 'src/app/service/local-storage.service';
-import { Customer } from '../../models/customer.model';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { CommunicationService } from 'src/app/service/communication.service';
-import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { Customer } from '../../models/customer.model';
+import { LocalStorageService } from '../../service/local-storage.service';
+import { CommunicationService } from '../../service/communication.service';
+import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
+import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-customers-table',
@@ -69,7 +69,7 @@ export class CustomersTableComponent implements OnInit {
       }
     }).afterClosed().subscribe((result) => {
       if (result) {
-        this.lsService.deleteCustomer(customerForDelete.id);
+        this.lsService.deleteCustomer(customerForDelete);
         this.refreshData();
       }
     });

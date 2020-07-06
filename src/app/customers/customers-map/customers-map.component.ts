@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LocalStorageService } from 'src/app/service/local-storage.service';
-import { Customer } from '../../models/customer.model';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
+import { Customer } from '../../models/customer.model';
+import { LocalStorageService } from '../../service/local-storage.service';
 
 @Component({
     templateUrl: './customers-map.component.html',
@@ -24,7 +24,7 @@ export class CustomersMapComponent implements OnInit {
         minZoom: 4,
     }
     markers = [];
-    infoContent: string;
+    infoContent: any;
   
   
     constructor(private lsService: LocalStorageService) { }
@@ -73,7 +73,8 @@ export class CustomersMapComponent implements OnInit {
     }
   
     openInfo(marker: MapMarker, content) {
-        this.infoContent = content
+        this.infoContent = content;
+        console.log("infoContent: ", this.infoContent)
         this.info.open(marker)
     }
 }

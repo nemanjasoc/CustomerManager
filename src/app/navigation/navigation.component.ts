@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditDialogComponent } from '../customer/customer-edit-dialog/customer-edit-dialog.component';
 import { CommunicationService } from '../service/communication.service';
+import { CustomerEditDialogComponent } from '../customer/customer-edit-dialog/customer-edit-dialog.component';
 
 @Component({
     selector: 'app-navigation',

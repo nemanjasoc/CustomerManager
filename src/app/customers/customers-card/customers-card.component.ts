@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
-import { Customer } from '../../models/customer.model';
-import { LocalStorageService } from 'src/app/service/local-storage.service';
-import { CommunicationService } from 'src/app/service/communication.service';
 import { Subscription } from 'rxjs';
-import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { Customer } from '../../models/customer.model';
+import { LocalStorageService } from '../../service/local-storage.service';
+import { CommunicationService } from '../../service/communication.service';
+import { CustomerEditDialogComponent } from '../../customer/customer-edit-dialog/customer-edit-dialog.component';
+import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   templateUrl: './customers-card.component.html',
@@ -62,7 +62,7 @@ export class CustomersCardComponent implements OnInit {
       }
     }).afterClosed().subscribe((result) => {
       if (result) {
-        this.lsService.deleteCustomer(customerForDelete.id);
+        this.lsService.deleteCustomer(customerForDelete);
         this.refreshData();
       }
     });

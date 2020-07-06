@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
-import { Customer } from '../../models/customer.model';
-import { MatDialog } from '@angular/material/dialog';
-import { LocalStorageService } from 'src/app/service/local-storage.service';
-import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
-import { CommunicationService } from 'src/app/service/communication.service';
 import { ActivatedRoute } from '@angular/router';
+import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
+import { Customer } from '../../models/customer.model';
+import { LocalStorageService } from '../../service/local-storage.service';
 
 @Component({
   templateUrl: './customer-details.component.html',
@@ -43,10 +41,8 @@ export class CustomerDetailsComponent implements OnInit {
   @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
 
 
-  constructor(public dialog: MatDialog, 
-    public communicationService: CommunicationService,
-    private lsService: LocalStorageService, 
-    private route: ActivatedRoute) {}
+  constructor(private lsService: LocalStorageService, 
+    private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
